@@ -1,0 +1,186 @@
+
+
+/*
+_____________________________________________________
+
+INHOUD
+_____________________________________________________
+
+1.  RESET
+2.	FONTS
+3.  GLOBALS
+4	PROFIEL
+5.	OPLEIDINGEN / CURSUSSEN
+6.	VAARDIGHEDEN & KENNIS
+7.	RELEVANTE WERKERVARING
+8.	OVERIGE WERKERVARING
+A.	TEST
+_____________________________________________________
+
+1. RESET
+_____________________________________________________*/
+
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{border:0;font-size:100%;font:inherit;vertical-align:baseline;margin:0;padding:0}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:none}table{border-collapse:collapse;border-spacing:0}
+/*unreset */
+strong 	{font-weight: bold; color: #000; }
+em 		{font-style: italic;}
+
+/*_____________________________________________________
+
+2. FONTS
+_____________________________________________________*/
+
+
+@font-face {
+	 font-family: 'futura';
+	 src: url('fonts/futurastdmedium.eot'); /* IE9 Compat Modes */
+	 src: url('fonts/futurastdmedium.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+			url('fonts/futurastdmedium.woff') format('woff'), /* Modern Browsers */
+			url('fonts/futurastdmedium.ttf') format('truetype'), /* Safari, Android, iOS */
+			url('fonts/futurastdmedium.svg#') format('svg'); /* Legacy iOS */
+	 font-weight: normal;
+	 font-style: normal;
+}
+
+/*_____________________________________________________
+
+3. GLOBALS
+_____________________________________________________*/
+
+body 				{ font-family:Verdana, Geneva, sans-serif; font-size:11px; background:#fff; color: #000; }
+.lt-ie9 body 			{ font-size:11px; }
+a 					{ color:#e98300; text-decoration:none;
+						-webkit-transition: all 0.15s ease-in 0s;
+						-moz-transition: all 0.15s ease-in 0s;
+						-ms-transition: all 0.15s ease-in 0s;
+						-o-transition: all 0.15s ease-in 0s;
+						transition: all 0.15s ease-in 0s; }
+a:hover				{ color: #000; }
+p 					{ line-height:1.450em; margin-bottom:1.750em; text-align: justify;}
+p.last				{ margin: 0; }
+p.limited_margin	{ margin-bottom: 8px; }
+table					{ margin-bottom:1.750em;}
+table th,
+table td 				{ line-height:1.750em; }
+h1,h2,h3, p			{ font-family: 'futura',Verdana,Geneva,sans-serif; color: #000; font-weight:normal; }
+h1 					{ margin-bottom:0.750em; font-size:1.467em; font-weight: bold;}
+h1 a,h2 a,h3 a 		{ text-decoration:none; }
+h3 					{ line-height:1.750em;}
+h3.subtitle			{ line-height: 1.450;}
+h2, h3				{ color: white; }
+h1, h2, h3			{ text-transform: uppercase; }
+p a					{ }
+p a:hover			{ text-decoration:underline; color: #e98300; }
+dt,dd				{ line-height:1.750em; }
+
+body, html {
+	margin: 0;
+	padding: 0;
+}
+
+@media screen {
+	body {
+		padding: 3em;
+	}
+}
+
+@media print {
+	@page { 
+		size: A4 landscape;
+		margin: 2.2em;
+		prince-image-resolution: 300dpi;
+		
+	}
+	
+	#main {
+		font-size: 1em;
+	}
+	
+	#main {
+		page-break-before: always;
+	}
+}
+
+
+#main > div > .content{
+	padding: 2em;
+}
+
+#main > div > .content p {
+	color:#fff;
+}
+
+#main > div > .content + .content {
+	margin-top: 1em;
+}
+
+.content h1 + .title {
+	padding-bottom: 2.3em;
+}
+
+.content h3 {
+	float: left;
+}
+.content h3 + h3 {
+	float: right;
+}
+
+/*_____________________________________________________
+
+4.	PROFIEL
+_____________________________________________________*/
+#PROFIEL {
+	background-color: #E98300 !important;
+}
+
+#PROFIEL h1 {
+	margin: 0;
+	color: white;
+}
+
+#PROFIEL h3 {
+	float: none;
+}
+
+#foto {
+	background-image: url("foto/serhan_uygur_96dpi.jpg");
+	height: 230px;
+}
+
+/*_____________________________________________________
+
+5.	OPLEIDINGEN / CURSUSSEN
+_____________________________________________________*/
+
+#OPLEIDINGEN_CURSUSSEN {
+	background-color: #7AB800 !important;
+}
+
+/*_____________________________________________________
+
+6.	VAARDIGHEDEN & KENNIS
+_____________________________________________________*/
+
+#VAARDIGHEDEN_KENNIS {
+	background-color: #00B9E4 !important;
+}
+
+/*_____________________________________________________
+
+7.	RELEVANTE WERKERVARING
+_____________________________________________________*/
+
+#RELEVANTE_WERKERVARING {
+	background-color: #A5ACAF !important;
+}
+
+/*_____________________________________________________
+
+8.	OVERIGE WERKERVARING
+_____________________________________________________*/
+
+#OVERIGE_WERKERVARING {
+	background-color: #565A5C !important;
+}
+
+
