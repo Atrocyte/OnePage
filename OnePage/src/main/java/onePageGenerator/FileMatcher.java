@@ -13,8 +13,9 @@ import org.w3c.dom.NodeList;
 
 public class FileMatcher {
 	String reportMessage;
-	File xmlFile;
 	File folder;
+	Document xmlDoc;
+	Node xmlNode;
 	List<File> retrievedXml = new ArrayList<File>();
 
 	void scanForXML(File jarFile) {
@@ -41,11 +42,10 @@ public class FileMatcher {
 
 			for (File file : retrievedXml) {
 				String fileName = this.stripExtension(file.getName().toString());
-				Document doc = dBuilder.parse(file);
-				NodeList nList = doc.getElementsByTagName("Name");
-				Node node = nList.item(0);
-//				System.out.println(node.getTextContent());
-				if (node.getTextContent().equals(fileName)) {
+				this.xmlDoc = dBuilder.parse(file);
+				NodeList nList = xmlDoc.getElementsByTagName("Name");
+				this.xmlNode = nList.item(0);
+				if (xmlNode.getTextContent().equals(fileName)) {
 					this.reportMessage = "Match found, generating OnePage CV for "
 							+ fileName; //alleen message over laatste persoon.
 					htmlGen.createHTML(file);

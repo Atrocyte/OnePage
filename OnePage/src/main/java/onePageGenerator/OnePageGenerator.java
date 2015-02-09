@@ -9,7 +9,7 @@ import java.net.URISyntaxException;
 public class OnePageGenerator {
 	String reportMessage;
 
-	public static void main(String[] args) throws URISyntaxException {
+	public static void main(String[] args)  {
 		OnePageGenerator app = new OnePageGenerator();
 		app.findFileLocation();
 //		app.reportStatus();
