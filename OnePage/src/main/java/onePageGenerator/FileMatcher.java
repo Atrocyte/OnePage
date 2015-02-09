@@ -15,7 +15,6 @@ public class FileMatcher {
 	String reportMessage;
 	File xmlFile;
 	File folder;
-	String targetFile = "0203OnePage.xml";
 	List<File> retrievedXml = new ArrayList<File>();
 
 	void scanForXML(File jarFile) {
