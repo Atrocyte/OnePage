@@ -22,8 +22,8 @@ public class OnePageGenerator {
 			xmlEditor.openFile(file);
 			String onePageName = xmlEditor.compareDataWithFilename(file);
 			OnePageCV onePage = new OnePageCV(onePageName, file);
-			onePage.setPhoto(fileFinder.findPhoto(onePage.getName()));
-			xmlEditor.injectPhoto(onePage.getPhoto());
+			onePage.setPhoto(fileFinder.findPhoto(onePage)); //TODO nog niet geimplementeerd
+			xmlEditor.injectPhoto(onePage.getPhoto()); //TODO nog niet geimplementeerd
 			onePage.setHtml(htmlGen.createHtml(onePage));
 			onePage.setPdf(pdfGen.createPdf(onePage));
 			
