@@ -1,57 +1,32 @@
 package onePageGenerator;
 
-import java.awt.Frame;
-import java.awt.Label;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 import java.io.File;
-import java.io.IOException;
-import java.net.URISyntaxException;
-
-import javax.xml.parsers.ParserConfigurationException;
-
-import org.xml.sax.SAXException;
-
-import com.lowagie.text.DocumentException;
+import java.util.ArrayList;
 
 public class OnePageGenerator {
-	XmlToHtmlGenerator htmlGen = XmlToHtmlGenerator.getHtmlFactory();
-	String reportMessage;
+	FileFinder fileFinder = new FileFinder(); // TODO inject?
+	XmlEditor xmlEditor = new XmlEditor();
+	HtmlGenerator htmlGen = new HtmlGenerator();
+	PdfRendererImpl pdfGen = new PdfRendererImpl();
+	File currentFolder;
+	ArrayList<File> xmlCollection;
 
-	public static void main(String[] args) {
-		OnePageGenerator app = new OnePageGenerator();
-		app.findFileLocation();
-		app.createPdfFromHtml();
-		// app.reportStatus();
+	void scanFolderForXml() {
+		System.out.println("Scanning for xml files...");
+		this.currentFolder = fileFinder.determineCurrentFolder();
+		this.xmlCollection = fileFinder.collectXmlFiles(currentFolder);
 	}
 
-	private void createPdfFromHtml() {
-		File htmlFile = htmlGen.getGeneratedHtmlFile();
-//		System.out.println(htmlFile.getAbsolutePath().toString()); htmlFile is nog null...
-		PdfRendererImpl pdfGen = new PdfRendererImpl();
-		try {
-			System.out.println("Heading to the PDF Generator... to be continued");
-//			pdfGen.renderPdf(htmlFile);
-		} catch (Exception e) {
-			e.printStackTrace();
-		} 
-	}
-
-	private void reportStatus() {
-		Frame f = new Frame();
-		f.addWindowListener(new WindowAdapter() {
-			public void windowClosing(WindowEvent e) {
-				System.exit(0);
-			}
-		});
-		f.add(new Label(reportMessage));
-		f.setSize(1500, 100);
-		f.setVisible(true);
-	}
-
-	private void findFileLocation() {
-		FileController fileControl = new FileController();
-		fileControl.findAndMatchFiles();
-		this.reportMessage = fileControl.getReportMessage();
+	void generateOnePageCV() throws Exception {
+		for (File file : xmlCollection) {
+			xmlEditor.openFile(file);
+			String onePageName = xmlEditor.compareDataWithFilename(file);
+			OnePageCV onePage = new OnePageCV(onePageName, file);
+			onePage.setPhoto(fileFinder.findPhoto(onePage.getName()));
+			xmlEditor.injectPhoto(onePage.getPhoto());
+			onePage.setHtml(htmlGen.createHtml(onePage));
+			onePage.setPdf(pdfGen.createPdf(onePage));
+			
+		}
 	}
 }
