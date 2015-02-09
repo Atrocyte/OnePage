@@ -33,7 +33,7 @@ public class FileMatcher {
 	}
 
 	void openXML() {
-		XmlToHtmlGenerator htmlGen = new XmlToHtmlGenerator();
+		XmlToHtmlGenerator htmlGen = XmlToHtmlGenerator.getHtmlFactory();
 		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder dBuilder;
 
@@ -41,13 +41,14 @@ public class FileMatcher {
 			dBuilder = dbFactory.newDocumentBuilder();
 
 			for (File file : retrievedXml) {
-				String fileName = this.stripExtension(file.getName().toString());
+				String fileName = this
+						.stripExtension(file.getName().toString());
 				this.xmlDoc = dBuilder.parse(file);
 				NodeList nList = xmlDoc.getElementsByTagName("Name");
 				this.xmlNode = nList.item(0);
 				if (xmlNode.getTextContent().equals(fileName)) {
 					this.reportMessage = "Match found, generating OnePage CV for "
-							+ fileName; //alleen message over laatste persoon.
+							+ fileName; // alleen message over laatste persoon.
 					htmlGen.createHTML(file);
 				} else {
 					this.reportMessage = "Unable to match "
@@ -62,8 +63,9 @@ public class FileMatcher {
 
 	private String stripExtension(String str) {
 		int pos = str.lastIndexOf(".");
-		if (pos == -1)
+		if (pos == -1) {
 			return str;
+		}
 		return str.substring(0, pos);
 	}
 
