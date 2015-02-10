@@ -25,7 +25,7 @@ public class OnePageGenerator {
 			onePage.setPhoto(fileFinder.findPhoto(onePage)); //TODO nog niet geimplementeerd
 			xmlEditor.injectPhoto(onePage.getPhoto()); //TODO nog niet geimplementeerd
 			onePage.setHtml(htmlGen.createHtml(onePage));
-			onePage.setPdf(pdfGen.createPdf(onePage));
+//			onePage.setPdf(pdfGen.createPdf(onePage));
 			
 		}
 	}
