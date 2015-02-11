@@ -7,7 +7,7 @@ public class OnePageGenerator {
 	FileFinder fileFinder = new FileFinder(); // TODO inject?
 	XmlEditor xmlEditor = new XmlEditor();
 	HtmlGenerator htmlGen = new HtmlGenerator();
-	PdfRendererImpl pdfGen = new PdfRendererImpl();
+	PdfRenderer pdfGen = new PdfRenderer();
 	File currentFolder;
 	ArrayList<File> xmlCollection;
 

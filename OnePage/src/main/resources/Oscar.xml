@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Employee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Personalia>
+		<Name>Oscar</Name>
+		<Function>Vrachtwagenchauffeur</Function>
+		<Description>Oscar weet van wanten. Daarbij zijn ook handschoenen onderdeel van zijn kennispakket. Sjaals en mutsen vindt hij moeilijk maar wel interessant.</Description>
+		<Location>Bussum</Location>
+		<LinkedIn>heb ik niet</LinkedIn>
+		<HighestEducation>HBO-V</HighestEducation>
+		<DateOfBirth>30-06-1986</DateOfBirth>
+		<Hobbies>Planten water geven</Hobbies>
+		<Tag>Awesome Dingen</Tag>
+	</Personalia>
+	<Education>
+		<Topic1>
+			<Certificate>Wanten</Certificate>
+			<Institute>V&amp;D</Institute>
+			<Year>1994</Year>
+		</Topic1>
+		<Topic2>
+			<Certificate>Handschoenen</Certificate>
+			<Institute>Bijenkorf</Institute>
+			<Year>2014</Year>
+		</Topic2>
+	</Education>
+	<PrimaryWorkingExperience>
+		<FunctionEmployer>Transporteur, Van Gent en Loos</FunctionEmployer>
+		<Duration>05-2010 tot 04-2013</Duration>
+		<Situation>Er moest wat getransporteerd worden</Situation>
+		<Tasks>Dat moest ik doen</Tasks>
+		<Results>Dat heb ik goed gedaan</Results>
+	</PrimaryWorkingExperience>
+</Employee>

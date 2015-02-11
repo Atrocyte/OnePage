@@ -1,7 +1,36 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>OnePage</groupId>
-  <artifactId>OnePage</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <name>OnePage</name>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>nl.ordina</groupId>
+	<artifactId>Clean_Minimal</artifactId>
+	<version>1.0</version>
+	<name>Ordina Clean Minimal One Page CV 1.0</name>
+	<dependencies>
+
+		<dependency>
+			<groupId>htmlcleaner</groupId>
+			<artifactId>htmlcleaner</artifactId>
+			<scope>system</scope>
+			<version>2.10</version>
+			<systemPath>${basedir}\src\lib\htmlcleaner-2.10.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>core-renderer</groupId>
+			<artifactId>core-renderer</artifactId>
+			<scope>system</scope>
+			<version>1.0</version>
+			<systemPath>${basedir}\src\lib\core-renderer.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>iText</groupId>
+			<artifactId>iText</artifactId>
+			<scope>system</scope>
+			<version>2.0.8</version>
+			<systemPath>${basedir}\src\lib\iText-2.0.8.jar</systemPath>
+		</dependency>
+
+	</dependencies>
+
 </project>
