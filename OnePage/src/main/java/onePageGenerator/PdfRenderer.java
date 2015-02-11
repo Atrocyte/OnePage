@@ -39,7 +39,7 @@ public class PdfRenderer {
         // Instead of writing to System.out we now write to the ByteArray buffer
         new PrettyXmlSerializer(props).writeToStream(node, out);
         System.out.println("HTML Cleaned, writing to buffer....");
-//test
+
         // Create the PDF
         ITextRenderer renderer = new ITextRenderer();
         InputStream stream = new ByteArrayInputStream(out.toString().getBytes(StandardCharsets.UTF_8));

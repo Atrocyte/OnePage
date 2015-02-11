@@ -23,7 +23,7 @@ _____________________________________________________
 1. RESET
 _____________________________________________________*/
 
-html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{border:0;font-size:100%;font:inherit;vertical-align:baseline;margin:0;padding:0}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:none}table{border-collapse:collapse;border-spacing:0}
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{border:0;font-size:100%;font:inherit;vertical-align:baseline;margin:0;padding:0}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1.25em}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:none}table{border-collapse:collapse;border-spacing:0}
 /*unreset */
 strong 	{font-weight: bold; color: #fff; }
 em 		{font-style: italic;}
@@ -63,8 +63,8 @@ table td 			{ line-height:1.750em; }
 h1,h2,h3, p			{ font-weight:normal; }
 h1 				{ font-family: 'Futura Std Bold',Verdana,Geneva,sans-serif;  margin-bottom:0.750em; font-size:1.467em;}
 h1 a,h2 a,h3 a                  { text-decoration:none; }
-h3 				{ font-family: 'Futura Std Medium',Verdana,Geneva,sans-serif;  line-height:1.750em;}
-h3.subtitel			{ line-height: 1.450;}
+h3 				{ font-family: 'Futura Std Medium',Verdana,Geneva,sans-serif;  line-height:1.750em; font-size:1.08em;}
+h3.subtitel			{ line-height: 1.450em; color: #eb7e08;}
 h2, h3				{ color: white; }
 h1, h2, h3			{ text-transform: uppercase; }
 p a				{ }
@@ -100,7 +100,7 @@ body, html {
     }
 }*/
 
-@page { size:landscape; margin: 0; padding: 0; margin-top: 5mm; margin-left: 5mm;}
+@page { size:landscape; margin: 0; padding: 0; margin-top: 5mm; margin-left: 10mm;}
 
 .col_1, .col_2, .col_3 {
     display:inline;
@@ -121,15 +121,15 @@ body, html {
 }
 
 .alpha {
-	margin-left: 0;
+    margin-left: 0;
 }
 
 .omega {
-	margin-right: 0;
+    margin-right: 0;
 }
 
 #main > div > .box{
-    padding: 2em;
+    padding: 1.3em 1.5em;
 }
 
 #main > div > .box p {
@@ -144,15 +144,15 @@ body, html {
     padding-bottom: 2.3em;
 }
 
-.box h3 {
+.titel h3 {
     float: left;
 }
-.box h3 + h3 {
+.titel h3 + h3 {
     float: right;
 }
 
 .devider {
-    margin-bottom: 0.8em;
+    margin-bottom: 0.6em;
 }
 
 /*_____________________________________________________
@@ -161,7 +161,7 @@ body, html {
 _____________________________________________________*/
 #PROFIEL {
     background-color: #eb7e08 !important;
-    height: 436px;
+    height: 400px;
 }
 
 #PROFIEL h1 {
@@ -178,25 +178,40 @@ _____________________________________________________*/
     overflow: hidden;
 }
 
-.icons > .icon{
-    height: 16px;
-}
 
-.icons > div > img{
-    vertical-align: middle;
-}
-
-.icons > div {
+.icons > li {
     background-repeat: no-repeat;
-    background-size: 16px;
+    background-size: 14px;
     padding-left: 20px;
-    padding-top: 3px;
+    min-height: 14px;
 }
 
-.icons > div.placeholder {
+.icons {
+    margin-top: 2em;
+}
+
+.icons > .devider {
+    margin-bottom: 0.8em;
+}
+
+.icons > li.placeholder {
     background-image: url("icons/placeholder_64.png");
 }
-
+.icons > li.linkedin {
+    background-image: url("icons/linkedin_64.png");
+}
+.icons > li.graduate {
+    background-image: url("icons/graduate_64.png");
+}
+.icons > li.cake {
+    background-image: url("icons/cake_64.png");
+}
+.icons > li.funny {
+    background-image: url("icons/funny_64.png");
+}
+.icons > li.tag {
+    background-image: url("icons/tag_64.png");
+}
 
 /*_____________________________________________________
 
@@ -205,8 +220,19 @@ _____________________________________________________*/
 
 #OPLEIDINGEN_CURSUSSEN {
     color:#575b5d;
-    height: 328px;
+    height: 317px;
     background-color: #A5ACAF !important;
+}
+
+#OPLEIDINGEN_CURSUSSEN .opleiding h3 {
+    min-width: 50px;
+    display: inline-block;
+    float: left;
+}
+#OPLEIDINGEN_CURSUSSEN .opleiding .instituut {
+    display: block;
+    padding-left: 50px;
+    clear: both;
 }
 
 /*_____________________________________________________
@@ -215,7 +241,7 @@ _____________________________________________________*/
 _____________________________________________________*/
 
 #VAARDIGHEDEN_KENNIS {
-    height: 328px;
+    height: 317px;
     color: #eb7e08 !important;
     background-color: #575b5d !important;
 }
@@ -226,7 +252,7 @@ _____________________________________________________*/
 _____________________________________________________*/
 
 #RELEVANTE_WERKERVARING {
-    height: 418px;
+    height: 400px;
     color: #eb7e08 !important;
     background-color: #575b5d !important;
 }
@@ -237,7 +263,7 @@ _____________________________________________________*/
 _____________________________________________________*/
 
 #OVERIGE_WERKERVARING {
-    height: 239px;
+    height: 234px;
     color:#575b5d;
     background-color: #A5ACAF !important;}
 
