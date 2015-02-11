@@ -7,29 +7,23 @@
     <dependencies>
         
         <dependency>
-            <groupId>htmlcleaner</groupId>
+            <groupId>net.sourceforge.htmlcleaner</groupId>
             <artifactId>htmlcleaner</artifactId>
-            <scope>system</scope>
             <version>2.10</version>
-            <systemPath>${basedir}\src\lib\htmlcleaner-2.10.jar</systemPath>
         </dependency>
-        
+
         <dependency>
-            <groupId>core-renderer</groupId>
-            <artifactId>core-renderer</artifactId>
-            <scope>system</scope>
-            <version>1.0</version>
-            <systemPath>${basedir}\src\lib\core-renderer.jar</systemPath>
+            <groupId>org.xhtmlrenderer</groupId>
+            <artifactId>flying-saucer-core</artifactId>
+            <version>9.0.7</version>
         </dependency>
-        
+
         <dependency>
-            <groupId>iText</groupId>
-            <artifactId>iText</artifactId>
-            <scope>system</scope>
-            <version>2.0.8</version>
-            <systemPath>${basedir}\src\lib\iText-2.0.8.jar</systemPath>
+            <groupId>com.lowagie</groupId>
+            <artifactId>itext</artifactId>
+            <version>2.1.7</version>
         </dependency>
-        
+
     </dependencies>
         
 </project>
