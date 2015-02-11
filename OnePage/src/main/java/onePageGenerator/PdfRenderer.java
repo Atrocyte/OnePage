@@ -10,6 +10,7 @@ import org.xhtmlrenderer.pdf.ITextRenderer;
 import org.xml.sax.SAXException;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -32,7 +33,7 @@ public class PdfRenderer {
         // Clean up the HTML to be well formed
         HtmlCleaner cleaner = new HtmlCleaner();
         CleanerProperties props = cleaner.getProperties();
-        TagNode node = cleaner.clean(PdfRenderer.class.getResourceAsStream("/src/index.html"));
+        TagNode node = cleaner.clean(new File("src/main/resources/index.html"));
         System.out.println("Cleaning HTML...");
 
         // Instead of writing to System.out we now write to the ByteArray buffer
@@ -57,11 +58,10 @@ public class PdfRenderer {
         Document doc = builder.parse(stream);
         System.out.println("Parsing Stream through builder to HTML Document...");
 
-        renderer.setDocument(doc, "file:///C:/Users/suy20680/Dropbox/CV/1page/Clean_Minimal-flying-saucer/xhtml2pdf/src/src/");
+        renderer.setDocument(doc, "file:///C:/Users/suy20680/Dropbox/CV/1page/git_repo/OnePage-Ordina/OnePage/src/main/resources/");
         System.out.println("Setting up HTML Document...");
 
         ITextFontResolver fr = renderer.getFontResolver();
-        fr.addFont("file:///C:/Users/suy20680/Dropbox/CV/1page/Clean_Minimal-flying-saucer/xhtml2pdf/src/src/fonts/FuturaStd-Light.otf", true);
         fr.addFont("file:///C:/Users/suy20680/Dropbox/CV/1page/Clean_Minimal-flying-saucer/xhtml2pdf/src/src/fonts/FuturaStd-Book.otf", true);
         fr.addFont("file:///C:/Users/suy20680/Dropbox/CV/1page/Clean_Minimal-flying-saucer/xhtml2pdf/src/src/fonts/FuturaStd-Medium.otf", true);
         fr.addFont("file:///C:/Users/suy20680/Dropbox/CV/1page/Clean_Minimal-flying-saucer/xhtml2pdf/src/src/fonts/FuturaStd-Bold.otf", true);
@@ -70,7 +70,7 @@ public class PdfRenderer {
         renderer.layout();
         System.out.println("Rendering HTML Document...");
 
-        OutputStream outputStream = new FileOutputStream("src/output/Clean Minimal CV.pdf");
+        OutputStream outputStream = new FileOutputStream("Clean Minimal CV.pdf");
         renderer.createPDF(outputStream);
         System.out.println("Writing to Output...");
 
