@@ -4,8 +4,8 @@ import java.io.File;
 
 public class OnePageCV {
 	private String name;
-	private File photo;
 	private File xmlData;
+	private File photo;
 	private File html;
 	private File pdf;
 

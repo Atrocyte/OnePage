@@ -22,10 +22,11 @@ public class OnePageGenerator {
 			xmlEditor.openFile(file);
 			String onePageName = xmlEditor.compareDataWithFilename(file);
 			OnePageCV onePage = new OnePageCV(onePageName, file);
-			onePage.setPhoto(fileFinder.findPhoto(onePage)); //TODO nog niet geimplementeerd
-			xmlEditor.injectPhoto(onePage.getPhoto()); //TODO nog niet geimplementeerd
+			onePage.setPhoto(fileFinder.findPhoto(onePage)); 
+			System.out.println("Foto path in onePage: " + onePage.getPhoto().getAbsolutePath());
+			xmlEditor.injectPhoto(onePage);
 			onePage.setHtml(htmlGen.createHtml(onePage));
-			onePage.setPdf(pdfGen.createPdf(onePage));
+//			onePage.setPdf(pdfGen.createPdf(onePage));
 			
 		}
 	}
