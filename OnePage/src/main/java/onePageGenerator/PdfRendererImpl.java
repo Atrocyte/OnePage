@@ -39,8 +39,8 @@ public class PdfRendererImpl {
 
         // Clean up the HTML to be well formed
         HtmlCleaner cleaner = new HtmlCleaner();
-        CleanerProperties props = cleaner.getProperties();
-        TagNode node = cleaner.clean(PdfRendererImpl.class.getResourceAsStream("/src/index.html"));
+        CleanerProperties props = cleaner.getProperties(); //TODO deze staan op null
+        TagNode node = cleaner.clean(PdfRendererImpl.class.getResourceAsStream(onePage.getHtml().getAbsolutePath()));
         System.out.println("Cleaning HTML...");
 
         // Instead of writing to System.out we now write to the ByteArray buffer

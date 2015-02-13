@@ -1,5 +1,6 @@
 package onePageGenerator;
 
+import java.awt.Desktop;
 import java.io.File;
 import java.util.ArrayList;
 
@@ -22,10 +23,11 @@ public class OnePageGenerator {
 			xmlEditor.openFile(file);
 			String onePageName = xmlEditor.compareDataWithFilename(file);
 			OnePageCV onePage = new OnePageCV(onePageName, file);
-			onePage.setPhoto(fileFinder.findPhoto(onePage)); //TODO nog niet geimplementeerd
-			xmlEditor.injectPhoto(onePage.getPhoto()); //TODO nog niet geimplementeerd
+			onePage.setPhoto(fileFinder.findPhoto(onePage)); 
+			xmlEditor.injectPhoto(onePage); 
 			onePage.setHtml(htmlGen.createHtml(onePage));
-			onePage.setPdf(pdfGen.createPdf(onePage));
+//			Desktop.getDesktop().open(onePage.getHtml()); //opens html directly for debugging
+//			onePage.setPdf(pdfGen.createPdf(onePage)); //TODO not yet working correctly
 			
 		}
 	}
