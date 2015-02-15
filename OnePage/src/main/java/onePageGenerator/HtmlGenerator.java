@@ -36,7 +36,7 @@ public class HtmlGenerator {
 		String fileFolder = onePageXmlData.getAbsolutePath().toString();
 		return new File(fileFolder.substring(0,
 				fileFolder.indexOf(onePageXmlData.getName()))
-				+ "\\Style1P.xsl");
+				+ "\\newConversion.xsl");
 	}
 
 	private File determineHtmlFileName(File onePageXmlData) {

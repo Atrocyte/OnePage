@@ -4,6 +4,12 @@ import java.io.File;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.transform.Result;
+import javax.xml.transform.Source;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
@@ -40,9 +46,13 @@ public class XmlEditor {
 		return name.substring(0, name.lastIndexOf("."));
 	}
 
-	public void injectPhoto(OnePageCV onePage) {
+	public void injectPhoto(OnePageCV onePage) throws Exception{
 		NodeList techNode = xmlDoc.getElementsByTagName("Tech1");
 		techNode.item(0).setTextContent(onePage.getPhoto().getAbsolutePath());
-//		System.out.println(techNode.item(0).getTextContent());
+		Transformer transformer = TransformerFactory.newInstance().newTransformer();
+		Source input = new DOMSource(xmlDoc);
+		Result output = new StreamResult(onePage.getXmlData().getAbsolutePath());
+		transformer.transform(input, output);
+		System.out.println("Injecting photo path: " + techNode.item(0).getTextContent());
 	}
 }
