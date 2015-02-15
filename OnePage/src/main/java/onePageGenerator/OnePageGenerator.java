@@ -1,7 +1,8 @@
 package onePageGenerator;
 
-import java.awt.Desktop;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 public class OnePageGenerator {
@@ -12,7 +13,7 @@ public class OnePageGenerator {
 	File currentFolder;
 	ArrayList<File> xmlCollection;
 
-	void scanFolderForXml() {
+	void scanFolderForXml() throws FileNotFoundException {
 		System.out.println("Scanning for xml files...");
 		this.currentFolder = fileFinder.determineCurrentFolder();
 		this.xmlCollection = fileFinder.collectXmlFiles(currentFolder);
@@ -26,9 +27,8 @@ public class OnePageGenerator {
 			onePage.setPhoto(fileFinder.findPhoto(onePage)); 
 			xmlEditor.injectPhoto(onePage); 
 			onePage.setHtml(htmlGen.createHtml(onePage));
-//			Desktop.getDesktop().open(onePage.getHtml()); //opens html directly for debugging
-//			onePage.setPdf(pdfGen.createPdf(onePage)); //TODO not yet working correctly
-			
+                        onePage.setPdf(pdfGen.createPdf(onePage));	
 		}
+
 	}
 }

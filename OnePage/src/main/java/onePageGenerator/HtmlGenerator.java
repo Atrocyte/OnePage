@@ -10,38 +10,39 @@ import javax.xml.transform.stream.StreamSource;
 
 public class HtmlGenerator {
 
-	private File xslTemplate;
-	private String fileFolder;
+    private File xslTemplate;
+    private String fileFolder;
 
-	public File createHtml(OnePageCV onePage) throws Exception {
-		xslTemplate = this.locateXslFile(onePage.getXmlData());
-		File generatedHtml = this.determineHtmlFileName(onePage.getXmlData());
-		String xmlData = onePage.getXmlData().getAbsolutePath().toString();
-		TransformerFactory tFactory = TransformerFactory.newInstance();
-		Transformer transformer = tFactory.newTransformer(new StreamSource(
-				xslTemplate));
+    public File createHtml(OnePageCV onePage) throws Exception {
+        xslTemplate = this.locateXslFile(onePage.getXmlData());
+        File generatedHtml = this.determineHtmlFileName(onePage.getXmlData());
+        String xmlData = onePage.getXmlData().getAbsolutePath().toString();
+        TransformerFactory tFactory = TransformerFactory.newInstance();
+        Transformer transformer = tFactory.newTransformer(new StreamSource(
+                xslTemplate));
 
-		transformer.transform(new StreamSource(xmlData), new StreamResult(
-				new FileOutputStream(generatedHtml)));
+        transformer.transform(new StreamSource(xmlData), new StreamResult(
+                new FileOutputStream(generatedHtml)));
 
-		System.out.println("Generating Ordina OnePage CV of: "
-				+ onePage.getName());
+        System.out.println("Generating Ordina OnePage CV of: "
+                + onePage.getName());
 
-		return generatedHtml;
-	}
+        return generatedHtml;
+    }
 
-	private File locateXslFile(File onePageXmlData) {
+    private File locateXslFile(File onePageXmlData) {
 		// TODO deze moet anders, gaat nu uit van externe file in dezelfde
-		// folder als de jar.
-		String fileFolder = onePageXmlData.getAbsolutePath().toString();
-		return new File(fileFolder.substring(0,
-				fileFolder.indexOf(onePageXmlData.getName()))
-				+ "\\newConversion.xsl");
-	}
+        // folder als de jar.
+        String fileFolder = onePageXmlData.getAbsolutePath().toString();
+        return new File(fileFolder.substring(0,
+                fileFolder.indexOf(onePageXmlData.getName()))
+                + "\\newConversion.xsl");
+    }
 
-	private File determineHtmlFileName(File onePageXmlData) {
-		String xmlFile = onePageXmlData.getAbsolutePath().toString();
-		return new File(xmlFile.substring(0, xmlFile.indexOf(".xml")) + ".html");
-	}
+    private File determineHtmlFileName(File onePageXmlData) {
+        String xmlFile = onePageXmlData.getAbsolutePath().toString();
+//        System.out.println(xmlFile.substring(0, xmlFile.indexOf(".xml")).replace(" ", "_") + " je moer");
+        return new File(xmlFile.substring(0, xmlFile.indexOf(".xml")).replace(" ", "_") + ".html");
+    }
 
 }

@@ -1,6 +1,5 @@
 package onePageGenerator;
 
-
 import java.io.ByteArrayInputStream;
 
 import org.htmlcleaner.CleanerProperties;
@@ -25,23 +24,25 @@ import org.xhtmlrenderer.pdf.ITextFontResolver;
 public class PdfRenderer {
 
     public File createPdf(OnePageCV onePage) throws Exception {
-    	String path = onePage.getHtml().getParent();
-    	File outputPdf = new File(path + "\\" + onePage.getName() + ".pdf");
-    	
+//        String path = onePage.getHtml().getParent(); //--> waarom heb je path nodig? je kan alles relatief aan jar doen?
+        String path = PdfRenderer.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath();
+        File htmlFileLoc = new File(path + onePage.getName().replace(" ", "_") + ".html");
+        File outputPdf = new File(path + onePage.getName().replace(" ", "_") + ".pdf");
         // Create a buffer to hold the cleaned up HTML
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         System.out.println("Buffer Created...");
-
+        
         // Clean up the HTML to be well formed
         HtmlCleaner cleaner = new HtmlCleaner();
         CleanerProperties props = cleaner.getProperties();
-        TagNode node = cleaner.clean(new File("src/main/resources/index.html"));
+        TagNode node = cleaner.clean(htmlFileLoc);
         System.out.println("Cleaning HTML...");
 
         // Instead of writing to System.out we now write to the ByteArray buffer
         new PrettyXmlSerializer(props).writeToStream(node, out);
         System.out.println("HTML Cleaned, writing to buffer....");
-
+        
+//        System.out.println(out.toString());
         // Create the PDF-
         ITextRenderer renderer = new ITextRenderer();
         InputStream stream = new ByteArrayInputStream(out.toString().getBytes(StandardCharsets.UTF_8));
@@ -60,24 +61,27 @@ public class PdfRenderer {
         Document doc = builder.parse(stream);
         System.out.println("Parsing Stream through builder to HTML Document...");
 
-        renderer.setDocument(doc, "file:///C:/Users/suy20680/Dropbox/CV/1page/git_repo/OnePage-Ordina/OnePage/src/main/resources/");
+        String documentPath = "file:///" + htmlFileLoc.getAbsoluteFile().toString().replace("\\", "/");
+        System.out.println(documentPath);
+        renderer.setDocument(doc, documentPath);
         System.out.println("Setting up HTML Document...");
 
         ITextFontResolver fr = renderer.getFontResolver();
-        File font1 = new File(path + "/fonts/FuturaStd-Light.otf");
-        File font2 = new File(path + "/fonts/FuturaStd-Book.otf");
-        File font3 = new File(path + "/fonts/FuturaStd-Medium.otf");
-        File font4 = new File(path + "/fonts/FuturaStd-Bold.otf");
+        File font1 = new File(path + "fonts/FuturaStd-Light.otf");
+        File font2 = new File(path + "fonts/FuturaStd-Book.otf");
+        File font3 = new File(path + "fonts/FuturaStd-Medium.otf");
+        File font4 = new File(path + "fonts/FuturaStd-Bold.otf");
         fr.addFont(font1.getAbsolutePath(), true);
         fr.addFont(font2.getAbsolutePath(), true);
         fr.addFont(font3.getAbsolutePath(), true);
         fr.addFont(font4.getAbsolutePath(), true);
         System.out.println("Embedding Fonts...");
-       
+
         renderer.layout();
         System.out.println("Rendering HTML Document...");
 
-        OutputStream outputStream = new FileOutputStream(path + "/" + onePage.getName() + ".pdf");
+//        OutputStream outputStream = new FileOutputStream(onePage.getName() + ".pdf"); //--> Gewoon opslaan op de root
+        OutputStream outputStream = new FileOutputStream(outputPdf); //--> Gewoon opslaan op de root
         renderer.createPDF(outputStream);
         System.out.println("Writing to Output...");
 
@@ -86,7 +90,7 @@ public class PdfRenderer {
         System.out.println("Finishing and Closing, thank you for flying with us!!");
         out.flush();
         out.close();
-		return outputPdf;
+        return outputPdf;
 
     }
 }

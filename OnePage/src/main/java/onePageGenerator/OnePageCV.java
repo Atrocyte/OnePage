@@ -3,47 +3,52 @@ package onePageGenerator;
 import java.io.File;
 
 public class OnePageCV {
-	private String name;
-	private File xmlData;
-	private File photo;
-	private File html;
-	private File pdf;
 
-	public OnePageCV(String onePageName, File file) {
-		this.name = onePageName;
-		this.xmlData = file;
-	}
+    private String name;
+    private File xmlData;
+    private File photo;
+    private File html;
+    private File pdf;
 
-	public String getName() {
-		return name;
-	}
+    public OnePageCV(String onePageName, File file) {
+        this.name = onePageName;
+        this.xmlData = file;
+    }
 
-	public void setPhoto(File photo) {
-		this.photo = photo;
-	}
+    public OnePageCV(String onePageName) {
+        this.name = onePageName;
+    }
 
-	public File getPhoto() {
-		return this.photo;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public File getXmlData() {
-		return xmlData;
-	}
+    public void setPhoto(File photo) {
+        this.photo = photo;
+    }
 
-	public void setHtml(File createdHtml) {
-		this.html = createdHtml;
-	}
+    public File getPhoto() {
+        return this.photo;
+    }
 
-	public File getHtml() {
-		return this.html;
-	}
+    public File getXmlData() {
+        return xmlData;
+    }
 
-	public void setPdf(File createdPdf) {
-		this.pdf = createdPdf;
-	}
+    public void setHtml(File createdHtml) {
+        this.html = createdHtml;
+    }
 
-	public File getPdf() {
-		return this.pdf;
-	}
+    public File getHtml() {
+        return this.html;
+    }
+
+    public void setPdf(File createdPdf) {
+        this.pdf = createdPdf;
+    }
+
+    public File getPdf() {
+        return this.pdf;
+    }
 
 }
