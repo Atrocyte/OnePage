@@ -28,7 +28,7 @@ public class FileFinder {
 				counter++;
 			}
 		}
-		System.out.printf("Retrieved %d CV candidates: %s %n", counter,
+		System.out.printf("Found %d One Page CV candidate(s): %s %n", counter,
 				xmlCollection);
 		return xmlCollection;
 	}
