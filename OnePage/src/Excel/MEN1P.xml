@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Employee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Personalia>
+		<Name>Mendelt Luinenburg</Name>
+		<Function>Java Developer</Function>
+		<Description>Mendelt is een sociale, enthousiaste Java Developer met een achtergrond als moleculair neurobioloog. </Description>
+		<Location>Leiden</Location>
+		<LinkedIn>nl.linkedin.com/in/mluinenburg/en</LinkedIn>
+		<HighestEducation>MSc Molecular Neurobiology</HighestEducation>
+		<DateOfBirth>30-06-1986</DateOfBirth>
+		<Hobbies>programmeren, koken, muziek</Hobbies>
+		<Tag>Developer, Teamplayer</Tag>
+	</Personalia>
+	<Education>
+		<Topic1/>
+		<Topic2/>
+		<Topic3/>
+		<Topic4/>
+		<Topic5/>
+		<Topic6/>
+	</Education>
+	<Skills>
+		<Skill1/>
+		<Skill2/>
+		<Skill3/>
+		<Skill4/>
+		<Skill5/>
+		<Skill6/>
+	</Skills>
+	<PrimaryWorkingExperience/>
+	<OtherWorkingExperience>
+		<WorkingExperience1/>
+		<WorkingExperience2/>
+		<WorkingExperience3/>
+	</OtherWorkingExperience>
+	<Technical>
+		<Tech1> </Tech1>
+	</Technical>
+</Employee>

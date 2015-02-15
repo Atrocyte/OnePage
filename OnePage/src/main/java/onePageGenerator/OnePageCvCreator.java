@@ -8,3 +8,4 @@ public class OnePageCvCreator {
 		onePageGenerator.generateOnePageCV();
 	}
 }
+	

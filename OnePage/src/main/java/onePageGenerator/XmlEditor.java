@@ -9,6 +9,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 
 public class XmlEditor {
+	Document xmlDoc;
 	String nodeName;
 	String name;
 	DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -16,7 +17,7 @@ public class XmlEditor {
 	void openFile(File file) {
 		try {
 			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-			Document xmlDoc = dBuilder.parse(file);
+			this.xmlDoc = dBuilder.parse(file);
 			NodeList nList = xmlDoc.getElementsByTagName("Name");
 			this.nodeName = nList.item(0).getTextContent();
 		} catch (Exception e) {
@@ -39,8 +40,9 @@ public class XmlEditor {
 		return name.substring(0, name.lastIndexOf("."));
 	}
 
-	public void injectPhoto(File photo) {
-		// TODO To be implemented.
-
+	public void injectPhoto(OnePageCV onePage) {
+		NodeList techNode = xmlDoc.getElementsByTagName("Tech1");
+		techNode.item(0).setTextContent(onePage.getPhoto().getAbsolutePath());
+//		System.out.println(techNode.item(0).getTextContent());
 	}
 }

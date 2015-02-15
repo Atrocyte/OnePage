@@ -1,7 +1,9 @@
 package onePageGenerator;
 
 import com.lowagie.text.DocumentException;
+
 import java.io.ByteArrayInputStream;
+
 import org.htmlcleaner.CleanerProperties;
 import org.htmlcleaner.HtmlCleaner;
 import org.htmlcleaner.PrettyXmlSerializer;
@@ -9,6 +11,7 @@ import org.htmlcleaner.TagNode;
 import org.xhtmlrenderer.pdf.ITextRenderer;
 import org.xml.sax.SAXException;
 import javax.xml.parsers.ParserConfigurationException;
+
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -17,15 +20,19 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URISyntaxException;
 import java.nio.charset.StandardCharsets;
+
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+
 import org.w3c.dom.Document;
 import org.xhtmlrenderer.pdf.ITextFontResolver;
 
 public class PdfRenderer {
 
-    public static void main(String[] args) throws IOException, DocumentException, ParserConfigurationException, SAXException, URISyntaxException {
-
+    public File createPdf(OnePageCV onePage) throws Exception {
+    	String path = onePage.getHtml().getParent();
+    	File outputPdf = new File(path + "\\" + onePage.getName() + ".pdf");
+    	
         // Create a buffer to hold the cleaned up HTML
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         System.out.println("Buffer Created...");
@@ -40,7 +47,7 @@ public class PdfRenderer {
         new PrettyXmlSerializer(props).writeToStream(node, out);
         System.out.println("HTML Cleaned, writing to buffer....");
 
-        // Create the PDF
+        // Create the PDF-
         ITextRenderer renderer = new ITextRenderer();
         InputStream stream = new ByteArrayInputStream(out.toString().getBytes(StandardCharsets.UTF_8));
         System.out.println("Creating InputStrem from buffer...");
@@ -62,15 +69,20 @@ public class PdfRenderer {
         System.out.println("Setting up HTML Document...");
 
         ITextFontResolver fr = renderer.getFontResolver();
-        fr.addFont("file:///C:/Users/suy20680/Dropbox/CV/1page/Clean_Minimal-flying-saucer/xhtml2pdf/src/src/fonts/FuturaStd-Book.otf", true);
-        fr.addFont("file:///C:/Users/suy20680/Dropbox/CV/1page/Clean_Minimal-flying-saucer/xhtml2pdf/src/src/fonts/FuturaStd-Medium.otf", true);
-        fr.addFont("file:///C:/Users/suy20680/Dropbox/CV/1page/Clean_Minimal-flying-saucer/xhtml2pdf/src/src/fonts/FuturaStd-Bold.otf", true);
+        File font1 = new File(path + "/fonts/FuturaStd-Light.otf");
+        File font2 = new File(path + "/fonts/FuturaStd-Book.otf");
+        File font3 = new File(path + "/fonts/FuturaStd-Medium.otf");
+        File font4 = new File(path + "/fonts/FuturaStd-Bold.otf");
+        fr.addFont(font1.getAbsolutePath(), true);
+        fr.addFont(font2.getAbsolutePath(), true);
+        fr.addFont(font3.getAbsolutePath(), true);
+        fr.addFont(font4.getAbsolutePath(), true);
         System.out.println("Embedding Fonts...");
        
         renderer.layout();
         System.out.println("Rendering HTML Document...");
 
-        OutputStream outputStream = new FileOutputStream("Clean Minimal CV.pdf");
+        OutputStream outputStream = new FileOutputStream(path + "/" + onePage.getName() + ".pdf");
         renderer.createPDF(outputStream);
         System.out.println("Writing to Output...");
 
@@ -79,6 +91,7 @@ public class PdfRenderer {
         System.out.println("Finishing and Closing, thank you for flying with us!!");
         out.flush();
         out.close();
+		return outputPdf;
 
     }
 }
