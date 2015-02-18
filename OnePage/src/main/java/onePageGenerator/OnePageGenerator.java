@@ -14,7 +14,7 @@ public class OnePageGenerator {
 	File currentFolder;
 	ArrayList<File> xmlCollection;
 
-	void scanFolderForXml() throws FileNotFoundException {
+	void scanFolderForXml() throws Exception {
 		System.out.println("Scanning for xml files...");
 		this.currentFolder = fileFinder.determineCurrentFolder();
 		this.xmlCollection = fileFinder.collectXmlFiles(currentFolder);
@@ -29,8 +29,8 @@ public class OnePageGenerator {
 			xmlEditor.injectPhoto(onePage); 
 			xmlEditor.setFuction(onePage);
 			onePage.setHtml(htmlGen.createHtml(onePage));
-			onePage.setPdf(pdfGen.createPdf(onePage));
-			fileCleaner.clean(onePage);
+//			onePage.setPdf(pdfGen.createPdf(onePage));
+//			fileCleaner.clean(onePage);
 		}
 
 	}

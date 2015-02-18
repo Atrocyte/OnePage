@@ -24,16 +24,16 @@ import org.xhtmlrenderer.pdf.ITextFontResolver;
 public class PdfRenderer {
 
     public File createPdf(OnePageCV onePage) throws Exception {
-//        String path = onePage.getHtml().getParent(); //--> waarom heb je path nodig? je kan alles relatief aan jar doen? <-dat was het al :P
-        String path = PdfRenderer.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath();
-        File htmlFileLoc = new File(path + onePage.getName().replace(" ", "_") + ".html");
-        File outputPdf = new File(path + onePage.getName().replace(" ", "_") + ".pdf");
+        String path = onePage.getHtml().getParent();
+        File htmlFileLoc = new File(path + "\\" + onePage.getName().replace(" ", "_") + ".html");
+        File outputPdf = new File(path + "\\" + onePage.getName().replace(" ", "_") + ".pdf");
         // Create a buffer to hold the cleaned up HTML
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         
         // Clean up the HTML to be well formed
         HtmlCleaner cleaner = new HtmlCleaner();
         CleanerProperties props = cleaner.getProperties();
+        System.out.println(htmlFileLoc);
         TagNode node = cleaner.clean(htmlFileLoc);
 
         // Instead of writing to System.out we now write to the ByteArray buffer
@@ -60,14 +60,21 @@ public class PdfRenderer {
         renderer.setDocument(doc, documentPath);
 
         ITextFontResolver fr = renderer.getFontResolver();
-        File font1 = new File(path + "fonts/FuturaStd-Light.otf");
-        File font2 = new File(path + "fonts/FuturaStd-Book.otf");
-        File font3 = new File(path + "fonts/FuturaStd-Medium.otf");
-        File font4 = new File(path + "fonts/FuturaStd-Bold.otf");
-        fr.addFont(font1.getAbsolutePath(), true);
-        fr.addFont(font2.getAbsolutePath(), true);
-        fr.addFont(font3.getAbsolutePath(), true);
-        fr.addFont(font4.getAbsolutePath(), true);
+        
+//        File font1 = new File(path + "fonts/FuturaStd-Light.otf");
+//        File font2 = new File(path + "fonts/FuturaStd-Book.otf");
+//        File font3 = new File(path + "fonts/FuturaStd-Medium.otf");
+//        File font4 = new File(path + "fonts/FuturaStd-Bold.otf");
+//        fr.addFont(new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("/resources/" + "fonts/FuturaStd-Light.otf"))), true);
+        fr.addFont(this.getClass().getResource("/resources/fonts/FuturaStd-Light.otf").getPath(), true);
+        fr.addFont(this.getClass().getResource("/resources/fonts/FuturaStd-Book.otf").getPath(), true);
+        fr.addFont(this.getClass().getResource("/resources/fonts/FuturaStd-Medium.otf").getPath(), true);
+        fr.addFont(this.getClass().getResource("/resources/fonts/FuturaStd-Bold.otf").getPath(), true);
+        System.out.println(this.getClass().getResource("/resources/fonts/FuturaStd-Light.otf").getPath());
+//        fr.addFont(font1.getAbsolutePath(), true);
+//        fr.addFont(font2.getAbsolutePath(), true);
+//        fr.addFont(font3.getAbsolutePath(), true);
+//        fr.addFont(font4.getAbsolutePath(), true);
 
         renderer.layout();
 

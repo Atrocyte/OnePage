@@ -11,7 +11,6 @@ import javax.xml.transform.stream.StreamSource;
 public class HtmlGenerator {
 
     private File xslTemplate;
-    private String fileFolder;
 
     public File createHtml(OnePageCV onePage) throws Exception {
         xslTemplate = this.locateXslFile(onePage.getXmlData());
@@ -33,10 +32,11 @@ public class HtmlGenerator {
     private File locateXslFile(File onePageXmlData) {
 		// TODO deze moet anders, gaat nu uit van externe file in dezelfde
         // folder als de jar.
-        String fileFolder = onePageXmlData.getAbsolutePath().toString();
-        return new File(fileFolder.substring(0,
-                fileFolder.indexOf(onePageXmlData.getName()))
-                + "\\newConversion.xsl");
+    	System.out.println("doe dingen");
+    	String file = onePageXmlData.getAbsolutePath();
+    	File dinges = new File(file.substring(0, file.indexOf(onePageXmlData.getName())) + "\\newConversion.xsl");
+    	System.out.println(dinges.getAbsolutePath());
+    	return dinges;
     }
 
     private File determineHtmlFileName(File onePageXmlData) {

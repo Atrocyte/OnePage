@@ -1,20 +1,19 @@
 package onePageGenerator;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.ArrayList;
 
 public class FileFinder {
 
-    public File determineCurrentFolder() {
-        File currentFolder = null;
-        try {
-            currentFolder = new File(OnePageCvCreator.class
-                    .getProtectionDomain().getCodeSource().getLocation()
-                    .toURI().getPath());
-        } catch (URISyntaxException e) {
-            e.printStackTrace();
-        }
+    public File determineCurrentFolder()  {
+        URL url = OnePageCvCreator.class.getProtectionDomain().getCodeSource().getLocation();
+        File temp = new File(url.getPath());
+        File temp2 = new File(temp.getAbsolutePath());
+        File currentFolder = new File(temp2.getParent());
+        System.out.println(currentFolder.getAbsolutePath());
         return currentFolder;
     }
 
