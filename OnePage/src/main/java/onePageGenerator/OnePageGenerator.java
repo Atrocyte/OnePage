@@ -6,10 +6,11 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 
 public class OnePageGenerator {
-	FileFinder fileFinder = new FileFinder(); // TODO inject?
+	FileFinder fileFinder = new FileFinder();
 	XmlEditor xmlEditor = new XmlEditor();
 	HtmlGenerator htmlGen = new HtmlGenerator();
 	PdfRenderer pdfGen = new PdfRenderer();
+	FileCleaner fileCleaner = new FileCleaner();
 	File currentFolder;
 	ArrayList<File> xmlCollection;
 
@@ -26,8 +27,10 @@ public class OnePageGenerator {
 			OnePageCV onePage = new OnePageCV(onePageName, file);
 			onePage.setPhoto(fileFinder.findPhoto(onePage)); 
 			xmlEditor.injectPhoto(onePage); 
+			xmlEditor.setFuction(onePage);
 			onePage.setHtml(htmlGen.createHtml(onePage));
-                        onePage.setPdf(pdfGen.createPdf(onePage));	
+			onePage.setPdf(pdfGen.createPdf(onePage));
+			fileCleaner.clean(onePage);
 		}
 
 	}

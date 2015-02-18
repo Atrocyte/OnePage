@@ -5,6 +5,7 @@ import java.io.File;
 public class OnePageCV {
 
     private String name;
+    private String function;
     private File xmlData;
     private File photo;
     private File html;
@@ -50,5 +51,13 @@ public class OnePageCV {
     public File getPdf() {
         return this.pdf;
     }
+
+	public String getFunction() {
+		return function;
+	}
+
+	public void setFunction(String function) {
+		this.function = function;
+	}
 
 }
