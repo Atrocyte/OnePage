@@ -7,6 +7,7 @@ public class OnePageCvCreator {
 		onePageGenerator.scanFolderForXml();
 		onePageGenerator.unpackResources();
 		onePageGenerator.generateOnePageCV();
+		onePageGenerator.cleanupResourceFolder();
 	}
 }
 	

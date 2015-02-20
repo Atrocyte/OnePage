@@ -11,7 +11,6 @@ public class FileFinder {
         File temp = new File(url.getPath());
         File temp2 = new File(temp.getAbsolutePath());
         File currentFolder = new File(temp2.getParent());
-        System.out.println(currentFolder.getAbsolutePath());
         return currentFolder;
     }
 

@@ -2,6 +2,7 @@ package onePageGenerator;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -55,7 +56,7 @@ public class XmlEditor {
 		return name.substring(0, name.lastIndexOf("."));
 	}
 
-	public void injectPhoto(OnePageCV onePage) throws TransformerFactoryConfigurationError, TransformerException {
+	public void injectPhoto(OnePageCV onePage) throws TransformerFactoryConfigurationError, TransformerException, MalformedURLException {
 		NodeList techNode = xmlDoc.getElementsByTagName("Tech1");
 		techNode.item(0).setTextContent(onePage.getPhoto().getAbsolutePath());
 		Transformer transformer = TransformerFactory.newInstance()
@@ -63,7 +64,6 @@ public class XmlEditor {
 		Source input = new DOMSource(xmlDoc);
 		Result output = new StreamResult(onePage.getXmlData().getAbsolutePath());
 		transformer.transform(input, output);
-		System.out.println("Injecting photo path: "
-				+ techNode.item(0).getTextContent());
+//		System.out.println("Injecting photo from path: "+ techNode.item(0).getTextContent());
 	}
 }

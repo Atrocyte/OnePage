@@ -79,4 +79,27 @@ public class ResourceManager {
 	File attachXslTemplate() throws FileNotFoundException {
 		return new File(targetFolder.getAbsolutePath() + "\\Conversion.xsl");
 	}
+
+	public boolean deleteDirectory(){
+		System.out.println("cleaning " + targetFolder.getAbsolutePath());
+		return this.deleteDirectory(targetFolder);
+		}
+	
+	public boolean deleteDirectory(File directory){
+	        File[] files = directory.listFiles();
+	        if(null!=files){
+	            for(int i=0; i<files.length; i++) {
+//	            	System.out.println("deleting " + files[i]);
+	                if(files[i].isDirectory()) {
+	                    deleteDirectory(files[i]);
+	                }
+	                else {
+	                    files[i].delete();
+	                }
+	            }
+	        }
+	    return(directory.delete());
+	}
+		
 }
+

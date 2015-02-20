@@ -15,8 +15,6 @@ public class HtmlGenerator {
 
     public File createHtml(OnePageCV onePage) throws Exception {
         File generatedHtml = this.determineHtmlFileName(onePage.getXmlData());
-        System.out.println("xsl path: " + xslTemplate.getAbsolutePath());
-        System.out.println("html path: " + generatedHtml.getAbsoluteFile().toString());
         String xmlData = onePage.getXmlData().getAbsolutePath().toString();
         TransformerFactory tFactory = TransformerFactory.newInstance();
         Transformer transformer = tFactory.newTransformer(new StreamSource(xslTemplate));
@@ -33,9 +31,8 @@ public class HtmlGenerator {
     private File determineHtmlFileName(File onePageXmlData) throws IOException {
     	String xmlName = onePageXmlData.getName().substring(0, onePageXmlData.getName().indexOf(".xml"));
     	String xmlPath = onePageXmlData.getAbsolutePath().substring(0, onePageXmlData.getAbsolutePath().indexOf(xmlName)) + "\\Resources\\";
-    	System.out.printf("filename %s and path %s %n", xmlName, xmlPath);
+//    	System.out.printf("filename %s and path %s %n", xmlName, xmlPath);
     	File htmlFile = new File(xmlPath + xmlName.replace(" ", "_") + ".html");
-    	System.out.println("creating file");
     	htmlFile.createNewFile();
     	return htmlFile;
     }

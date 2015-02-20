@@ -8,7 +8,7 @@ public class FileCleaner {
 
 	public void clean(OnePageCV onePage) throws IOException {
 		this.renamePdf(onePage);
-		this.deleteGeneratedHtml(onePage);
+//		this.deleteGeneratedHtml(onePage);
 	}
 
 	private void renamePdf(OnePageCV onePage) throws IOException {
@@ -17,10 +17,9 @@ public class FileCleaner {
 		this.removePreviousPdf(newPdfName);
 		boolean isPdfRenamed = oldPdf.renameTo(newPdfName);
 		if (isPdfRenamed){
-//			System.out.println("Pdf renamed, deleting old file");
 			Files.deleteIfExists(oldPdf.getAbsoluteFile().toPath());
 			}
-		System.out.printf("Generated Ordina CV: %s", newPdfName.getName());
+		System.out.printf("Generated Ordina CV: %s %n", newPdfName.getName());
 		}
 
 	private void removePreviousPdf(File newPdfName) throws IOException {

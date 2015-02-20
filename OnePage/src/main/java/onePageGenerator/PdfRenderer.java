@@ -37,7 +37,6 @@ public class PdfRenderer {
         // Clean up the HTML to be well formed
         HtmlCleaner cleaner = new HtmlCleaner();
         CleanerProperties props = cleaner.getProperties();
-        System.out.println(htmlFileLoc);
         TagNode node = cleaner.clean(htmlFileLoc);
 
         // Instead of writing to System.out we now write to the ByteArray buffer

@@ -3,6 +3,7 @@ package onePageGenerator;
 import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.nio.file.Files;
 import java.util.ArrayList;
 
 public class OnePageGenerator {
@@ -39,6 +40,9 @@ public class OnePageGenerator {
 			onePage.setPdf(pdfGen.createPdf(onePage));
 			fileCleaner.clean(onePage);
 		}
-
+	}
+	
+	public void cleanupResourceFolder() throws IOException {
+		boolean isCleanedUp = resourceManager.deleteDirectory();
 	}
 }
