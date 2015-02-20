@@ -13,7 +13,7 @@ public class FileCleaner {
 
 	private void renamePdf(OnePageCV onePage) throws IOException {
 		File oldPdf = onePage.getPdf();
-		File newPdfName = new File(onePage.getPdf().getParent() + "\\" + onePage.getName() + " - " + onePage.getFunction() + ".pdf");
+		File newPdfName = new File(onePage.getXmlData().getParent() + "\\" + onePage.getName() + " - " + onePage.getFunction() + ".pdf");
 		this.removePreviousPdf(newPdfName);
 		boolean isPdfRenamed = oldPdf.renameTo(newPdfName);
 		if (isPdfRenamed){

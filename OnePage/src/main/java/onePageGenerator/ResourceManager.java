@@ -46,17 +46,14 @@ public class ResourceManager {
 		    while(entries.hasMoreElements()) {
 		        final String resource = entries.nextElement().getName();
 		        if (resource.startsWith(path) && (resource.length() > path.length())) { 
-		            InputStream in = getClass().getResourceAsStream(resource);
+		            InputStream in = getClass().getClassLoader().getResourceAsStream(resource);
 		            String filename = resource.substring(path.length());
 		    		File file = new File(targetFolder.getAbsolutePath() + "\\" + filename);
-		    		try {
-						boolean fileIsMade = file.createNewFile();
-						if(fileIsMade){
-							System.out.printf("attaching file %s %n", file);
-							Files.copy(in, file.getAbsoluteFile().toPath(), StandardCopyOption.REPLACE_EXISTING);
-						}
-					} catch (Exception e) {
-//						TODO remove this nasty hack
+					boolean fileIsMade = file.createNewFile();
+					if(fileIsMade){
+						System.out.printf("attaching file %s %n", file);
+						Files.copy(in, file.getAbsoluteFile().toPath(), StandardCopyOption.REPLACE_EXISTING);
+						
 					}
 		        }
 		    }

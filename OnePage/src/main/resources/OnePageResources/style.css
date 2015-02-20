@@ -34,14 +34,14 @@ _____________________________________________________*/
 
 @font-face {
     font-family: 'Futura Std Book';
-    src: url('FuturaStd-Book.otf') format("opentype");
+    src: url('FuturaStdBook.otf') format("opentype");
 }
 @font-face {
     font-family: 'Futura Std Medium';
-    src: url('FuturaStd-Medium.otf') format("opentype");
+    src: url('FuturaStdMedium.otf') format("opentype");
 }@font-face {
     font-family: 'Futura Std Bold';
-    src: url('FuturaStd-Bold.otf') format("opentype");
+    src: url('FuturaStdBold.otf') format("opentype");
 }
 
 /*_____________________________________________________
