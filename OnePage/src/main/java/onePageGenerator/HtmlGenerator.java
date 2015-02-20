@@ -2,6 +2,7 @@ package onePageGenerator;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
@@ -10,15 +11,15 @@ import javax.xml.transform.stream.StreamSource;
 
 public class HtmlGenerator {
 
-    private File xslTemplate;
+	private File xslTemplate;
 
     public File createHtml(OnePageCV onePage) throws Exception {
-        xslTemplate = this.locateXslFile(onePage.getXmlData());
         File generatedHtml = this.determineHtmlFileName(onePage.getXmlData());
+        System.out.println("xsl path: " + xslTemplate.getAbsolutePath());
+        System.out.println("html path: " + generatedHtml.getAbsoluteFile().toString());
         String xmlData = onePage.getXmlData().getAbsolutePath().toString();
         TransformerFactory tFactory = TransformerFactory.newInstance();
-        Transformer transformer = tFactory.newTransformer(new StreamSource(
-                xslTemplate));
+        Transformer transformer = tFactory.newTransformer(new StreamSource(xslTemplate));
 
         transformer.transform(new StreamSource(xmlData), new StreamResult(
                 new FileOutputStream(generatedHtml)));
@@ -29,20 +30,18 @@ public class HtmlGenerator {
         return generatedHtml;
     }
 
-    private File locateXslFile(File onePageXmlData) {
-		// TODO deze moet anders, gaat nu uit van externe file in dezelfde
-        // folder als de jar.
-    	System.out.println("doe dingen");
-    	String file = onePageXmlData.getAbsolutePath();
-    	File dinges = new File(file.substring(0, file.indexOf(onePageXmlData.getName())) + "\\newConversion.xsl");
-    	System.out.println(dinges.getAbsolutePath());
-    	return dinges;
+    private File determineHtmlFileName(File onePageXmlData) throws IOException {
+    	String xmlName = onePageXmlData.getName().substring(0, onePageXmlData.getName().indexOf(".xml"));
+    	String xmlPath = onePageXmlData.getAbsolutePath().substring(0, onePageXmlData.getAbsolutePath().indexOf(xmlName)) + "\\Resources\\";
+    	System.out.printf("filename %s and path %s %n", xmlName, xmlPath);
+    	File htmlFile = new File(xmlPath + xmlName.replace(" ", "_") + ".html");
+    	System.out.println("creating file");
+    	htmlFile.createNewFile();
+    	return htmlFile;
     }
 
-    private File determineHtmlFileName(File onePageXmlData) {
-        String xmlFile = onePageXmlData.getAbsolutePath().toString();
-//        System.out.println(xmlFile.substring(0, xmlFile.indexOf(".xml")).replace(" ", "_") + " je moer");
-        return new File(xmlFile.substring(0, xmlFile.indexOf(".xml")).replace(" ", "_") + ".html");
-    }
+	public void setXslTemplate(File xslTemplate) {
+		this.xslTemplate = xslTemplate;
+	}
 
 }

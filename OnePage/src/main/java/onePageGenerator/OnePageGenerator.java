@@ -1,8 +1,8 @@
 package onePageGenerator;
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
+import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 
 public class OnePageGenerator {
@@ -11,6 +11,7 @@ public class OnePageGenerator {
 	HtmlGenerator htmlGen = new HtmlGenerator();
 	PdfRenderer pdfGen = new PdfRenderer();
 	FileCleaner fileCleaner = new FileCleaner();
+	ResourceManager resourceManager = new ResourceManager();
 	File currentFolder;
 	ArrayList<File> xmlCollection;
 
@@ -18,6 +19,12 @@ public class OnePageGenerator {
 		System.out.println("Scanning for xml files...");
 		this.currentFolder = fileFinder.determineCurrentFolder();
 		this.xmlCollection = fileFinder.collectXmlFiles(currentFolder);
+	}
+	
+	void unpackResources() throws IOException, URISyntaxException{
+		resourceManager.unpackFiles(currentFolder);
+		htmlGen.setXslTemplate(resourceManager.attachXslTemplate());
+		pdfGen.setFonts(resourceManager.attachFonts());
 	}
 
 	void generateOnePageCV() throws Exception {
@@ -29,8 +36,8 @@ public class OnePageGenerator {
 			xmlEditor.injectPhoto(onePage); 
 			xmlEditor.setFuction(onePage);
 			onePage.setHtml(htmlGen.createHtml(onePage));
-//			onePage.setPdf(pdfGen.createPdf(onePage));
-//			fileCleaner.clean(onePage);
+			onePage.setPdf(pdfGen.createPdf(onePage));
+			fileCleaner.clean(onePage);
 		}
 
 	}

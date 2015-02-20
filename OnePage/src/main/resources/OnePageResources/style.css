@@ -1,4 +1,4 @@
-@import "css/fluid_grid.css";
+@import "fluid_grid.css";
 
 
 /*
@@ -34,14 +34,14 @@ _____________________________________________________*/
 
 @font-face {
     font-family: 'Futura Std Book';
-    src: url('fonts/FuturaStd-Book.otf') format("opentype");
+    src: url('FuturaStd-Book.otf') format("opentype");
 }
 @font-face {
     font-family: 'Futura Std Medium';
-    src: url('fonts/FuturaStd-Medium.otf') format("opentype");
+    src: url('FuturaStd-Medium.otf') format("opentype");
 }@font-face {
     font-family: 'Futura Std Bold';
-    src: url('fonts/FuturaStd-Bold.otf') format("opentype");
+    src: url('FuturaStd-Bold.otf') format("opentype");
 }
 
 /*_____________________________________________________
@@ -188,22 +188,22 @@ _____________________________________________________*/
 }
 
 .icons > li.placeholder {
-    background-image: url("icons/placeholder_64.png");
+    background-image: url("placeholder_64.png");
 }
 .icons > li.linkedin {
-    background-image: url("icons/linkedin_64.png");
+    background-image: url("linkedin_64.png");
 }
 .icons > li.graduate {
-    background-image: url("icons/graduate_64.png");
+    background-image: url("graduate_64.png");
 }
 .icons > li.cake {
-    background-image: url("icons/cake_64.png");
+    background-image: url("cake_64.png");
 }
 .icons > li.funny {
-    background-image: url("icons/funny_64.png");
+    background-image: url("funny_64.png");
 }
 .icons > li.tag {
-    background-image: url("icons/tag_64.png");
+    background-image: url("tag_64.png");
 }
 
 /*_____________________________________________________
@@ -232,8 +232,43 @@ _____________________________________________________*/
     color: #eb7e08 !important;
     background-color: #575b5d !important;
     margin-top: 10px;
-
 }
+
+#VAARDIGHEDEN_KENNIS .vaardigheid {
+    margin-bottom: 0.7em;
+}
+
+#VAARDIGHEDEN_KENNIS .bar_bg {
+	width: 100%;
+	height: 0.7em;
+	background-color: gray;
+	margin-top: 0.3em;
+	
+}
+
+#VAARDIGHEDEN_KENNIS .bar {
+	height:100%;
+	background-color: white;
+}
+
+#VAARDIGHEDEN_KENNIS ul {
+margin-top: 0.3em;
+	color: white;
+	display: table;
+	width: 100%;
+	list-style: none;
+}
+
+#VAARDIGHEDEN_KENNIS ul li {
+	font-size: 0.85em;
+	width: 33.3%;
+	display: table-cell;
+	color: #ccc;
+}
+
+#VAARDIGHEDEN_KENNIS ul li.left {text-align: left;}
+#VAARDIGHEDEN_KENNIS ul li.center {text-align: center;}
+#VAARDIGHEDEN_KENNIS ul li.right {text-align: right;}
 
 /*_____________________________________________________
 
