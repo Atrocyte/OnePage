@@ -1,12 +1,9 @@
 package onePageGenerator;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
@@ -37,7 +34,7 @@ public class ResourceManager {
 	}
 	
 	private void unpackJar() throws IOException {
-		final File jarFile = new File(this.getClass().getProtectionDomain().getCodeSource().getLocation().getPath());
+		final File jarFile = new File(this.getClass().getProtectionDomain().getCodeSource().getLocation().getPath().replace("%20", " "));
 		final String path = "resources/OnePageResources/";
 		
 		if(jarFile.isFile()) { 

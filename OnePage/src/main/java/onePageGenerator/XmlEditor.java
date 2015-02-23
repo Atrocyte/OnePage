@@ -58,7 +58,7 @@ public class XmlEditor {
 
 	public void injectPhoto(OnePageCV onePage) throws TransformerFactoryConfigurationError, TransformerException, MalformedURLException {
 		NodeList techNode = xmlDoc.getElementsByTagName("Tech1");
-		techNode.item(0).setTextContent(onePage.getPhoto().getAbsolutePath());
+		techNode.item(0).setTextContent(onePage.getPhoto().toURI().toString());
 		Transformer transformer = TransformerFactory.newInstance()
 				.newTransformer();
 		Source input = new DOMSource(xmlDoc);

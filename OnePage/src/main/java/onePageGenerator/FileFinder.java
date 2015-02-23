@@ -1,6 +1,7 @@
 package onePageGenerator;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.net.URL;
 import java.util.ArrayList;
 
@@ -10,14 +11,18 @@ public class FileFinder {
         URL url = OnePageCvCreator.class.getProtectionDomain().getCodeSource().getLocation();
         File temp = new File(url.getPath());
         File temp2 = new File(temp.getAbsolutePath());
-        File currentFolder = new File(temp2.getParent());
+        File currentFolder = new File(temp2.getParent().replace("%20", " "));
+        System.out.println(currentFolder.getAbsolutePath().toString());
         return currentFolder;
     }
 
-    public ArrayList<File> collectXmlFiles(File currentFolder) {
+    public ArrayList<File> collectXmlFiles(File currentFolder) throws FileNotFoundException {
         File[] fList = currentFolder.listFiles();
         ArrayList<File> xmlCollection = new ArrayList<File>();
         int counter = 0;
+        if (fList == null){
+        	throw new FileNotFoundException("No xml found in folder: " + currentFolder.getAbsolutePath());
+        }
         for (File file : fList) {
             if (file.isFile() && file.getName().endsWith("xml")) {
                 xmlCollection.add(file);

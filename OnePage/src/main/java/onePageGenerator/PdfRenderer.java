@@ -57,7 +57,8 @@ public class PdfRenderer {
 
         Document doc = builder.parse(stream);
 
-        String documentPath = "file:///" + htmlFileLoc.getAbsoluteFile().toString().replace("\\", "/");
+        String documentPath = htmlFileLoc.toURI().toURL().toString();
+        
         renderer.setDocument(doc, documentPath);
 
         ITextFontResolver fr = renderer.getFontResolver();
