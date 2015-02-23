@@ -30,8 +30,8 @@ public class HtmlGenerator {
 
     private File determineHtmlFileName(File onePageXmlData) throws IOException {
     	String xmlName = onePageXmlData.getName().substring(0, onePageXmlData.getName().indexOf(".xml"));
-    	String xmlPath = onePageXmlData.getAbsolutePath().substring(0, onePageXmlData.getAbsolutePath().indexOf(xmlName)) + "\\Resources\\";
-//    	System.out.printf("filename %s and path %s %n", xmlName, xmlPath);
+    	String xmlPath = onePageXmlData.getAbsolutePath().substring(0, onePageXmlData.getAbsolutePath().lastIndexOf(xmlName)) + "\\Resources\\";
+//    	System.out.printf("filename %s, and path %s %n", xmlName, xmlPath);
     	File htmlFile = new File(xmlPath + xmlName.replace(" ", "_") + ".html");
     	htmlFile.createNewFile();
     	return htmlFile;
