@@ -31,20 +31,19 @@ public class PdfRenderer {
         String path = onePage.getHtml().getParent() + "\\";
         File htmlFileLoc = new File(path +  onePage.getName().replace(" ", "_") + ".html");
         File outputPdf = new File(path + onePage.getName().replace(" ", "_") + ".pdf");
-        // Create a buffer to hold the cleaned up HTML
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         
-        // Clean up the HTML to be well formed
         HtmlCleaner cleaner = new HtmlCleaner();
         CleanerProperties props = cleaner.getProperties();
         TagNode node = cleaner.clean(htmlFileLoc);
 
-        // Instead of writing to System.out we now write to the ByteArray buffer
         new PrettyXmlSerializer(props).writeToStream(node, out);
         
-        // Create the PDF-
         ITextRenderer renderer = new ITextRenderer();
-        InputStream stream = new ByteArrayInputStream(out.toString().getBytes(StandardCharsets.UTF_8));
+        
+        //andere Charsets geven accenten en trema's niet goed weer
+        InputStream stream = new ByteArrayInputStream(out.toString().getBytes(StandardCharsets.ISO_8859_1));
+        
 
         DocumentBuilderFactory fac = DocumentBuilderFactory.newInstance();
         fac.setNamespaceAware(false);
