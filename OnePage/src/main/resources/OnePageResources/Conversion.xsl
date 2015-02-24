@@ -73,7 +73,7 @@
 	                            <div class="vaardigheid">
 								<h3><xsl:value-of select="Description"/></h3>
 								<div class="bar_bg">
-									<div class="bar" style="width:{Percentage}%;"><xsl:value-of select="Percentage"/></div>
+									<div class="bar" style="width:{Percentage}%;"></div>
 								</div>
 								<ul>
 									<li class="left">junior</li>
