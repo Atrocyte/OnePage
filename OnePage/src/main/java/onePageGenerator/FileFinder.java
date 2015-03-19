@@ -2,8 +2,12 @@ package onePageGenerator;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
 import java.util.ArrayList;
+
+import net.coobird.thumbnailator.Thumbnails;
 
 public class FileFinder {
 
@@ -51,6 +55,18 @@ public class FileFinder {
         } else {
             throw new Exception("Foto niet gevonden, lever deze aan als .jpg of .png");
         }
-        return photo;
+        return photoOfCorrectSize(photo);
     }
+
+	private File photoOfCorrectSize(File photo) throws IOException {
+		if(Files.size(photo.toPath()) > 1_000_000){
+			resizePhoto(photo);
+		}
+		return photo;
+	}
+
+	private void resizePhoto(File photo) throws IOException {
+		System.out.printf("Resizing photo of %s%n", photo.getName());
+		Thumbnails.of(photo).size(500, 500).outputFormat("jpg").toFile(photo);
+	}
 }
