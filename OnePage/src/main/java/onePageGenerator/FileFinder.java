@@ -59,14 +59,12 @@ public class FileFinder {
     }
 
 	private File photoOfCorrectSize(File photo) throws IOException {
-		if(Files.size(photo.toPath()) > 1_000_000){
-			resizePhoto(photo);
-		}
-		return photo;
-	}
-
-	private void resizePhoto(File photo) throws IOException {
 		System.out.printf("Resizing photo of %s%n", photo.getName());
-		Thumbnails.of(photo).size(500, 500).outputFormat("jpg").toFile(photo);
+		if(photo.getName().endsWith("png")){
+			Thumbnails.of(photo).size(270, 270).outputFormat("png").toFile(photo);
+		} else {
+		Thumbnails.of(photo).size(270, 270).outputFormat("jpg").toFile(photo);
+		} 
+		return photo;
 	}
 }
