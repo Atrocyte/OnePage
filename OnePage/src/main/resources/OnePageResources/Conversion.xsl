@@ -2,8 +2,8 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 version="1.0">
     <xsl:output method="html" doctype-system="-//W3C//DTD XHTML 1.0 Transitional//EN"
-                    doctype-public="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
-                    omit-xml-declaration="yes" encoding="UTF-8" indent="yes" />
+                doctype-public="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                omit-xml-declaration="yes" encoding="UTF-8" indent="yes" />
     <xsl:template match="/">
         <html>
             <head>
@@ -15,11 +15,16 @@
                 <div id="main" class="chapter container_16">
                     <div class="col_1 alpha">
                         <div id="foto">
-                            <img>
-                                <xsl:attribute name="src">
-                                    <xsl:value-of select="Employee/Technical/Tech1" />
+                            <div id="placeholder">
+                                <xsl:attribute name="style">
+                                    background-image:url(<xsl:value-of select="Employee/Technical/Tech1" />)
                                 </xsl:attribute>
-                            </img>
+                                <!--<img>-->
+                                <!--<xsl:attribute name="src">-->
+                                <!--<xsl:value-of select="Employee/Technical/Tech1" />-->
+                                <!--</xsl:attribute>-->
+                                <!--</img>-->
+                            </div>
                         </div>
                         <div id="PROFIEL" class="box">
                             <div class="titel devider">
@@ -192,7 +197,11 @@
                             </div>
                         </div>
                     </div>
+                    <div id="footer">
+                        <img src="logo_ordina_30.png"></img>
+                    </div>
                 </div>
+             
             </body>
 
         </html>
