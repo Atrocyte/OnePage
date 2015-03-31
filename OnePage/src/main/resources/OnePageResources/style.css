@@ -153,7 +153,7 @@ p {margin: 0}
 _____________________________________________________*/
 #PROFIEL {
     background-color: #eb7e08 !important;
-    height: 410px;
+    height: 405px;
 }
 
 #PROFIEL .devider {
@@ -173,10 +173,17 @@ _____________________________________________________*/
 }
 
 #foto {
-    height: 270px;
+    max-height: 290px;
+    max-width: 254px;
     overflow: hidden;
 }
 
+#foto #placeholder {
+    height: 290px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover, 290px;
+}
 
 .icons > li {
     background-repeat: no-repeat;
@@ -219,7 +226,7 @@ _____________________________________________________*/
 
 #OPLEIDINGEN_CURSUSSEN {
     color:#575b5d;
-    height: 320px;
+    height: 330px;
     background-color: #A5ACAF !important;
 }
 
@@ -234,7 +241,7 @@ _____________________________________________________*/
 _____________________________________________________*/
 
 #VAARDIGHEDEN_KENNIS {
-    height: 330px;
+    height: 335px;
     color: #eb7e08 !important;
     background-color: #575b5d !important;
     margin-top: 10px;
@@ -289,19 +296,41 @@ _____________________________________________________*/
     background-color: #575b5d !important;
 }
 
+#RELEVANTE_WERKERVARING .content > div {
+    padding-bottom: 7px;
+}
+
+
 /*_____________________________________________________
 
 8.	OVERIGE WERKERVARING
 _____________________________________________________*/
 
 #OVERIGE_WERKERVARING {
-    height: 250px;
+    height: 265px;
     color:#575b5d;
     background-color: #A5ACAF !important;
     margin-top: 10px;
+}
 
+#OVERIGE_WERKERVARING > div {
+    padding-bottom: 7px;
 }
 
 .box .content {
     clear: both
+}
+
+
+/*_____________________________________________________
+
+8.	FOOTER
+_____________________________________________________*/
+
+#footer {
+    clear:both;
+}
+
+#footer {
+    padding-top: 5px; 
 }

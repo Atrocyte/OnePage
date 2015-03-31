@@ -61,9 +61,9 @@ public class FileFinder {
 	private File photoOfCorrectSize(File photo) throws IOException {
 		System.out.printf("Resizing photo of %s%n", photo.getName());
 		if(photo.getName().endsWith("png")){
-			Thumbnails.of(photo).size(270, 270).outputFormat("png").toFile(photo);
+			Thumbnails.of(photo).size(300, 300).outputFormat("png").toFile(photo);
 		} else {
-		Thumbnails.of(photo).size(270, 270).outputFormat("jpg").toFile(photo);
+		Thumbnails.of(photo).size(300, 300).outputFormat("jpg").toFile(photo);
 		} 
 		return photo;
 	}
